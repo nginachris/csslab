@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Study Hub</title>
+    <link rel="stylesheet" href="csslab.css">
+</head>
+<body>
+    <div class="page">
+        <header class="site-header">
+            <div class="brand-row">
+                <div>
+                    <h1 class="site-title">Student Study Hub</h1>
+                    <p class="site-tagline">Simple course, resource, registration, and gallery pages for a class assignment.</p>
+                </div>
+            </div>
+            <nav class="site-nav" aria-label="Primary">
+                <ul>
+                    <li><a class="active" href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <div class="hero-copy">
+                <h2>Welcome to Student Study Hub</h2>
+                <p>
+                    This website brings the main lab pages together in one place.
+                </p>
+                <div class="hero-actions">
+                    <button onclick="studentInfo()">Enter Student Details</button>
+                    <a class="button" href="register.html">Start Registration</a>
+                </div>
+            </div>
+            <div class="hero-media">
+                <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 700'%3E%3Crect width='900' height='700' fill='%23edf2f7'/%3E%3Crect x='120' y='110' width='660' height='480' rx='20' fill='%23ffffff' stroke='%23d7dde6'/%3E%3Crect x='180' y='170' width='240' height='22' rx='6' fill='%232457a6'/%3E%3Crect x='180' y='220' width='420' height='14' rx='5' fill='%23c6cfdb'/%3E%3Crect x='180' y='250' width='370' height='14' rx='5' fill='%23c6cfdb'/%3E%3Crect x='180' y='280' width='300' height='14' rx='5' fill='%23c6cfdb'/%3E%3Crect x='180' y='350' width='540' height='150' rx='16' fill='%23edf2f7' stroke='%23d7dde6'/%3E%3Crect x='210' y='385' width='130' height='16' rx='4' fill='%232457a6'/%3E%3Crect x='210' y='420' width='220' height='12' rx='4' fill='%23c6cfdb'/%3E%3Crect x='210' y='445' width='180' height='12' rx='4' fill='%23c6cfdb'/%3E%3C/svg%3E" alt="Study notes layout">
+            </div>
+        </section>
+
+        <section class="grid feature-grid">
+            <article class="feature-card">
+                <div class="feature-icon">01</div>
+                <h3>Online Courses</h3>
+                <p>Browse a simple list of study options and course durations.</p>
+            </article>
+            <article class="feature-card">
+                <div class="feature-icon">02</div>
+                <h3>Study Resources</h3>
+                <p>Find recommended books, websites, and practical study tips.</p>
+            </article>
+            <article class="feature-card">
+                <div class="feature-icon">03</div>
+                <h3>Registration Portal</h3>
+                <p>Complete a visually styled form with clear spacing and structure.</p>
+            </article>
+        </section>
+
+        <section class="content-card stack">
+            <h3>About this site</h3>
+            <p>
+                The pages use one external stylesheet so the layout stays consistent across the whole website.
+            </p>
+            <p id="name" class="muted"></p>
+            <p id="course" class="muted"></p>
+            <p id="year" class="muted"></p>
+            <p id="message" class="muted"></p>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2026 Student Study Hub</p>
+        </footer>
+    </div>
+
+    <script>
+        function studentInfo() {
+            const studentName = prompt("Enter your name:");
+            const course = prompt("Enter your course:");
+            const year = prompt("Enter your year of study:");
+
+            document.getElementById("name").innerHTML = "<strong>Name:</strong> " + studentName;
+            document.getElementById("course").innerHTML = "<strong>Course:</strong> " + course;
+            document.getElementById("year").innerHTML = "<strong>Year of Study:</strong> " + year;
+
+            if (year == 4) {
+                document.getElementById("message").textContent = "Congratulations! You are a Year 4 student. Wishing you success in your final year and future career.";
+            } else {
+                document.getElementById("message").textContent = "Keep studying hard. All the best in your studies.";
+            }
+        }
+    </script>
+</body>
+</html>

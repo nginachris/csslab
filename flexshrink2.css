@@ -1,0 +1,90 @@
+
+.navbar {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a1a2e;
+  padding: 0 24px;
+  min-height: 60px;
+}
+
+
+.nav-links {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 8px;
+}
+
+.nav-logo {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav-links a {
+  color: #cccccc;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
+.nav-links a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+
+.container-one {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(141, 63, 209);
+  border: 5px solid black;
+  padding: 20px;
+  gap: 10px;
+}
+
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(141, 178, 226);
+  border: 5px solid black;
+  height: 100px;
+  width: 100px;
+  font-size: 45px;
+  font-weight: bold;
+}
+
+
+.container-two {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #f0f0f0;
+  border: 5px solid black;
+  padding: 20px;
+  gap: 10px;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a1a2e;
+  color: white;
+  height: 100px;
+  width: 150px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 8px;
+}

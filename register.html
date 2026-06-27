@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Student Study Hub</title>
+    <link rel="stylesheet" href="csslab.css">
+</head>
+<body>
+    <div class="page">
+        <header class="site-header">
+            <div class="brand-row">
+                <div>
+                    <h1 class="site-title">Student Registration Form</h1>
+                    <p class="site-tagline">The registration form for the website.</p>
+                </div>
+            </div>
+            <nav class="site-nav" aria-label="Primary">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a class="active" href="register.html">Register</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="form-panel">
+            <h2>Register your details</h2>
+            <form>
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="fullname">Full Name</label>
+                        <input id="fullname" type="text" name="fullname" placeholder="Enter your full name">
+                    </div>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" name="email" placeholder="name@example.com">
+                    </div>
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input id="password" type="password" name="password" placeholder="Create a password">
+                    </div>
+                    <div class="field">
+                        <label for="dob">Date of Birth</label>
+                        <input id="dob" type="date" name="dob">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Gender</label>
+                    <div class="inline-group">
+                        <label class="inline-option"><input type="radio" name="gender" value="male"> Male</label>
+                        <label class="inline-option"><input type="radio" name="gender" value="female"> Female</label>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="course">Select Course</label>
+                    <select id="course" name="course">
+                        <option>HTML Basics</option>
+                        <option>CSS Fundamentals</option>
+                        <option>JavaScript Essentials</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Interests</label>
+                    <div class="inline-group">
+                        <label class="inline-option"><input type="checkbox" name="interests" value="programming"> Programming</label>
+                        <label class="inline-option"><input type="checkbox" name="interests" value="design"> Design</label>
+                        <label class="inline-option"><input type="checkbox" name="interests" value="networking"> Networking</label>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <input type="submit" value="Register">
+                    <a class="button" href="gallery.html">View Gallery</a>
+                </div>
+            </form>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2026 Student Study Hub</p>
+        </footer>
+    </div>
+</body>
+</html>
