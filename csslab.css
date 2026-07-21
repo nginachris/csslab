@@ -353,6 +353,45 @@ input[type="checkbox"] {
     color: var(--muted);
 }
 
+.form-status {
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #f6f0ea;
+    color: var(--text);
+    border: 1px solid var(--border);
+    min-height: 44px;
+}
+
+.form-status:empty {
+    display: none;
+}
+
+.form-status[data-state="error"] {
+    background: #fff1f1;
+    border-color: #efc1c1;
+    color: #8c2f2f;
+}
+
+.form-status[data-state="success"] {
+    background: #edf7ed;
+    border-color: #c5e1c5;
+    color: #215a21;
+}
+
+.welcome-message {
+    margin: 0;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    font-weight: 600;
+}
+
+.content-card button {
+    width: fit-content;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;

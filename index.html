@@ -28,8 +28,9 @@
         <section class="hero">
             <div class="hero-copy">
                 <h2>Welcome to Student Study Hub</h2>
+                <p class="site-tagline">A study space built with HTML, CSS, and JavaScript.</p>
                 <div class="hero-actions">
-                    <button onclick="studentInfo()">Enter Student Details</button>
+                    <button type="button" data-update-welcome>Enter Your Name</button>
                     <a class="button" href="register.html">Start Registration</a>
                 </div>
             </div>
@@ -57,10 +58,8 @@
         </section>
 
         <section class="content-card stack">
-            <p id="name" class="muted"></p>
-            <p id="course" class="muted"></p>
-            <p id="year" class="muted"></p>
-            <p id="message" class="muted"></p>
+            <h2>Personalised Welcome</h2>
+            <p data-home-welcome class="welcome-message">Enter your name to personalise this page.</p>
         </section>
 
         <footer class="footer">
@@ -68,22 +67,6 @@
         </footer>
     </div>
 
-    <script>
-        function studentInfo() {
-            const studentName = prompt("Enter your name:");
-            const course = prompt("Enter your course:");
-            const year = prompt("Enter your year of study:");
-
-            document.getElementById("name").innerHTML = "<strong>Name:</strong> " + studentName;
-            document.getElementById("course").innerHTML = "<strong>Course:</strong> " + course;
-            document.getElementById("year").innerHTML = "<strong>Year of Study:</strong> " + year;
-
-            if (year == 4) {
-                document.getElementById("message").textContent = "Congratulations! You are a Year 4 student. Wishing you success in your final year and future career.";
-            } else {
-                document.getElementById("message").textContent = "Keep studying hard. All the best in your studies.";
-            }
-        }
-    </script>
+    <script src="student.js" defer></script>
 </body>
 </html>

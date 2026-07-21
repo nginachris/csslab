@@ -27,44 +27,45 @@
 
         <section class="form-panel">
             <h2>Register your details</h2>
-            <form>
+            <form data-register-form>
                 <div class="form-grid">
                     <div class="field">
                         <label for="fullname">Full Name</label>
-                        <input id="fullname" type="text" name="fullname" placeholder="Enter your full name">
+                        <input id="fullname" type="text" name="fullname" placeholder="Enter your full name" required>
                     </div>
                     <div class="field">
                         <label for="email">Email</label>
-                        <input id="email" type="email" name="email" placeholder="name@example.com">
+                        <input id="email" type="email" name="email" placeholder="name@example.com" required>
                     </div>
                     <div class="field">
                         <label for="password">Password</label>
-                        <input id="password" type="password" name="password" placeholder="Create a password">
+                        <input id="password" type="password" name="password" placeholder="Create a password" minlength="6" required>
                     </div>
                     <div class="field">
                         <label for="dob">Date of Birth</label>
-                        <input id="dob" type="date" name="dob">
+                        <input id="dob" type="date" name="dob" required>
                     </div>
                 </div>
 
-                <div class="field">
+                <div class="field" data-required-group="gender" data-group-label="Gender">
                     <label>Gender</label>
                     <div class="inline-group">
-                        <label class="inline-option"><input type="radio" name="gender" value="male"> Male</label>
+                        <label class="inline-option"><input type="radio" name="gender" value="male" required> Male</label>
                         <label class="inline-option"><input type="radio" name="gender" value="female"> Female</label>
                     </div>
                 </div>
 
                 <div class="field">
                     <label for="course">Select Course</label>
-                    <select id="course" name="course">
+                    <select id="course" name="course" required>
+                        <option value="" selected disabled>Select a course</option>
                         <option>HTML Basics</option>
                         <option>CSS Fundamentals</option>
                         <option>JavaScript Essentials</option>
                     </select>
                 </div>
 
-                <div class="field">
+                <div class="field" data-required-group="interests" data-group-label="Interests">
                     <label>Interests</label>
                     <div class="inline-group">
                         <label class="inline-option"><input type="checkbox" name="interests" value="programming"> Programming</label>
@@ -73,16 +74,20 @@
                     </div>
                 </div>
 
+                <p class="muted">All fields are required before you submit the form.</p>
+
                 <div class="actions">
                     <input type="submit" value="Register">
                     <a class="button" href="gallery.html">View Gallery</a>
                 </div>
             </form>
+            <p id="form-status" class="form-status" data-form-status aria-live="polite" hidden></p>
         </section>
 
-        <footer class="footer">
-            <p>&copy; 2026 Student Study Hub</p>
-        </footer>
+    <footer class="footer">
+        <p>&copy; 2026 Student Study Hub</p>
+    </footer>
     </div>
+    <script src="student.js" defer></script>
 </body>
 </html>
