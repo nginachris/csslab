@@ -108,7 +108,7 @@ if ($dbConnection !== null) {
         $dbNotice = 'The database is connected, but no records could be retrieved yet.';
     }
 } else {
-    $dbNotice = 'Database connection unavailable. Import the SQL file and confirm your XAMPP MySQL settings.';
+    $dbNotice = 'Database connection unavailable. Open setup.php in XAMPP to create the database, then confirm your MySQL settings.';
 }
 ?>
 <!DOCTYPE html>
