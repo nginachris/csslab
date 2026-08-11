@@ -110,6 +110,10 @@ function getFieldLabel(field) {
     return "This field";
 }
 
+function getNamedInputs(form, name) {
+    return form.querySelectorAll(`input[name="${name}"], input[name="${name}[]"]`);
+}
+
 function getMissingRequiredFields(form) {
     const missing = [];
     const handledRadioGroups = new Set();
@@ -145,7 +149,7 @@ function getMissingRequiredFields(form) {
             return;
         }
 
-        const inputs = form.querySelectorAll(`input[name="${groupName}"]`);
+        const inputs = getNamedInputs(form, groupName);
         if (!inputs.length) {
             return;
         }
@@ -258,11 +262,11 @@ function initRegistrationForm() {
             });
         }
 
-        if (Array.isArray(saved.interests)) {
-            form.querySelectorAll('input[name="interests"]').forEach((input) => {
-                input.checked = saved.interests.includes(input.value);
-            });
-        }
+            if (Array.isArray(saved.interests)) {
+                getNamedInputs(form, "interests").forEach((input) => {
+                    input.checked = saved.interests.includes(input.value);
+                });
+            }
 
         setStatus(status, "Loaded your last saved registration details in this browser.", "success");
     }
@@ -295,7 +299,7 @@ function initRegistrationForm() {
             dob: form.elements.dob.value,
             gender: form.querySelector('input[name="gender"]:checked')?.value || "",
             course: form.elements.course.value,
-            interests: Array.from(form.querySelectorAll('input[name="interests"]:checked')).map((input) => input.value),
+            interests: Array.from(form.querySelectorAll('input[name="interests"]:checked, input[name="interests[]"]:checked')).map((input) => input.value),
         };
 
         const savedSuccessfully = saveRegistration(payload);
