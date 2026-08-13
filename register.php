@@ -34,7 +34,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dob = clean((string)($_POST['dob'] ?? ''));
     $course = clean((string)($_POST['course'] ?? ''));
     $gender = clean((string)($_POST['gender'] ?? ''));
-    $interests = array_values(array_filter(array_map('trim', (array)($_POST['interests'] ?? []))));
+
+    $rawInterests = $_POST['interests'] ?? ($_POST['interests[]'] ?? []);
+    if (!is_array($rawInterests)) {
+        $rawInterests = [$rawInterests];
+    }
+
+    $allowedInterests = ['programming', 'design', 'networking'];
+    $interests = array_values(array_intersect(
+        $allowedInterests,
+        array_map('trim', array_map('strval', $rawInterests))
+    ));
 
     $missing = [];
     if ($fullName === '') {
@@ -66,7 +76,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $message = 'Please enter a valid email address.';
         $messageState = 'error';
     } elseif ($dbConnection === null) {
-        $message = 'Form received by POST, but the database connection is not available. Check your MySQL settings.';
+        $reason = db_last_error();
+        $message = 'Form received by POST, but the database connection is not available. Check your MariaDB settings.' . ($reason ? ' ' . $reason : '');
         $messageState = 'error';
     } else {
         try {
@@ -108,7 +119,8 @@ if ($dbConnection !== null) {
         $dbNotice = 'The database is connected, but no records could be retrieved yet.';
     }
 } else {
-    $dbNotice = 'Database connection unavailable. Open setup.php in XAMPP to create the database, then confirm your MySQL settings.';
+    $reason = db_last_error();
+    $dbNotice = 'Database connection unavailable. Open setup.php to create the database, then confirm your MariaDB settings.' . ($reason ? ' ' . $reason : '');
 }
 ?>
 <!DOCTYPE html>

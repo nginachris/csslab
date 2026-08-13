@@ -248,6 +248,8 @@ function initRegistrationForm() {
 
     const status = document.querySelector("[data-form-status]");
 
+    const hasServerStatus = Boolean(status && status.textContent.trim().length > 0);
+
     const saved = getSavedRegistration();
     if (saved) {
         if (form.elements.fullname) form.elements.fullname.value = saved.fullName || "";
@@ -268,7 +270,9 @@ function initRegistrationForm() {
                 });
             }
 
-        setStatus(status, "Loaded your last saved registration details in this browser.", "success");
+        if (!hasServerStatus) {
+            setStatus(status, "Loaded your last saved registration details in this browser.", "success");
+        }
     }
 
     form.addEventListener("input", () => {
@@ -278,7 +282,13 @@ function initRegistrationForm() {
     });
 
     form.addEventListener("submit", (event) => {
-        event.preventDefault();
+        const postsToServer =
+            (form.method || "").toLowerCase() === "post" &&
+            window.location.pathname.toLowerCase().endsWith(".php");
+
+        if (!postsToServer) {
+            event.preventDefault();
+        }
 
         const missingFields = getMissingRequiredFields(form);
         if (missingFields.length > 0) {
@@ -315,6 +325,10 @@ function initRegistrationForm() {
                 : `Validated ${payload.fullName} for ${payload.course}, but browser storage was blocked.`,
             "success"
         );
+
+        if (postsToServer) {
+            return;
+        }
     });
 }
 

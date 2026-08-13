@@ -1,0 +1,20 @@
+Options -MultiViews
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+RewriteRule ^home/?$ index.html [R=301,L]
+RewriteRule ^register\.html$ register.php [R=301,L]
+
+RewriteRule ^$ index.html [L]
+RewriteRule ^index/?$ index.html [L]
+RewriteRule ^courses/?$ courses.html [L]
+RewriteRule ^resources/?$ resources.html [L]
+RewriteRule ^gallery/?$ gallery.html [L]
+RewriteRule ^register/?$ register.php [L]
+RewriteRule ^setup/?$ setup.php [L]
+
+RewriteRule . index.html [L]

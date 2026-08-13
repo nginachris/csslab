@@ -1,25 +1,27 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/db.php';
+
 function h(string $value): string
 {
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }
 
-$host = 'localhost';
-$user = 'root';
-$password = '';
-$database = 'student_study_hub';
+$settings = db_settings();
+$database = $settings['database'];
 $table = 'registrations';
 $messages = [];
 $success = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
-        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-
-        $connection = new mysqli($host, $user, $password);
-        $connection->set_charset('utf8mb4');
+        $connection = db_server_connection();
+        if ($connection === null) {
+            $reason = db_last_error();
+            $suffix = $reason ? ' ' . $reason : '';
+            throw new RuntimeException('Could not connect to MariaDB server.' . $suffix);
+        }
 
         $connection->query("CREATE DATABASE IF NOT EXISTS `$database`");
         $connection->select_db($database);
@@ -39,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         );
 
         $success = true;
-        $messages[] = 'Database `student_study_hub` is ready.';
+        $messages[] = 'MariaDB database `' . $database . '` is ready.';
         $messages[] = 'Table `registrations` is ready.';
         $messages[] = 'You can now open `register.php` and submit the form.';
     } catch (Throwable $exception) {
@@ -61,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="brand-row">
                 <div>
                     <h1 class="site-title">Database Setup</h1>
-                    <p class="site-tagline">Create the MySQL database and registrations table for the PHP demo.</p>
+                    <p class="site-tagline">Create the MariaDB database and registrations table for the PHP demo.</p>
                 </div>
             </div>
             <nav class="site-nav" aria-label="Primary">
@@ -77,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <section class="form-panel">
             <h2>Run database setup</h2>
-            <p class="muted">Click the button below once while running XAMPP/MySQL locally. It will create the database and table if they do not already exist.</p>
+            <p class="muted">Click the button below while MariaDB is running. It creates the database and table if they do not already exist.</p>
 
             <form method="post" action="">
                 <div class="actions">
